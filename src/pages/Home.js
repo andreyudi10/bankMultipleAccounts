@@ -56,7 +56,7 @@ function Home(props) {
     return(
         <div>
             Helo Mr Many Account
-            <MDBBtn color="secondary">Button</MDBBtn>
+            {/* <MDBBtn color="secondary">Button</MDBBtn> */}
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">
                     <tr>
