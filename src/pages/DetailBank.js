@@ -32,7 +32,7 @@ function DetailBank(props) {
             </h1>
             <Link to="/">
                 <MDBBtn className={styles.backButton}>
-                    balik
+                    back
                 </MDBBtn>                
             </Link>
             <MDBTable hover>
