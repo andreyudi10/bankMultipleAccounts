@@ -4,6 +4,7 @@ import { useParams} from "react-router-dom";
 import { Link } from 'react-router-dom'
 import dataLihat from './data.json'
 import {MDBTable, MDBTableBody,MDBTableHead} from 'mdb-react-ui-kit'
+import styles from './DetailBank.module.css'
 
 function DetailBank(props) {    
     const {id} = useParams()
@@ -30,9 +31,13 @@ function DetailBank(props) {
     // ,[])
     return(
         <div>
-            Detail Bank                            
+            <h1 className={styles.title}>
+                Detail Bank                            
+            </h1>
             <Link to="/">
-                <MDBBtn>balik</MDBBtn>                
+                <MDBBtn className={styles.backButton}>
+                    balik
+                </MDBBtn>                
             </Link>
             <MDBTable hover>
             <MDBTableHead className="bg-primary shadow-1-strong text-light">

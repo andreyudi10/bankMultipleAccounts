@@ -3,6 +3,7 @@ import dataLihat from './data.json'
 import { useHistory} from 'react-router-dom'
 import { MDBBtn } from 'mdb-react-ui-kit';
 import {MDBTable, MDBTableBody,MDBTableHead} from 'mdb-react-ui-kit'
+import styles from './Home.module.css'
 function Home(props) {    
     let history = useHistory()
     const [data,setData] = useState(dataLihat.data)
@@ -55,7 +56,9 @@ function Home(props) {
     ))
     return(
         <div>
-            Helo Mr Many Account
+            <h1 className={styles.title}>                
+                Helo Mr Many Account
+            </h1>
             {/* <MDBBtn color="secondary">Button</MDBBtn> */}
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">

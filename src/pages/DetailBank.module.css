@@ -1,0 +1,10 @@
+.backButton{
+    display:block;
+    float:right;        
+    margin: 0 auto;
+}
+
+.title{
+    display: inline-block;
+    margin:0 auto;
+}
