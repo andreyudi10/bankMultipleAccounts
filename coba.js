@@ -1,0 +1,35 @@
+let arayOfObject = [
+    {
+        'data1':1,
+        'data2':2,
+        'data3':[
+            {
+                'objek1':10,
+                'objek2':20,
+                'objek3':30
+            },
+            {
+                'objek1':10,
+                'objek2':20,
+                'objek3':30
+            },
+        ]
+    },
+    {
+        'data1':1,
+        'data2':2,
+        'data3':[
+            {
+                'objek1':10,
+                'objek2':20,
+                'objek3':30
+            },
+            {
+                'objek1':10,
+                'objek2':20,
+                'objek3':30
+            },
+        ]
+    },
+    ]
+console.log(arayOfObject)
