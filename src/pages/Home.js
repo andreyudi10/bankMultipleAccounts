@@ -1,7 +1,6 @@
 import React,{ useEffect, useState } from 'react'
 import dataLihat from './data.json'
 import { useHistory} from 'react-router-dom'
-import { MDBBtn } from 'mdb-react-ui-kit';
 import {MDBTable, MDBTableBody,MDBTableHead} from 'mdb-react-ui-kit'
 import styles from './Home.module.css'
 function Home(props) {    
@@ -10,6 +9,7 @@ function Home(props) {
     const handleClick = (e) =>(           
         history.push(`./${e.target.parentNode.getAttribute('nama')}`)        
     )
+    // console.log(props.data)
     // const aray = [
     //     {
     //         value:'andri',
@@ -42,24 +42,19 @@ function Home(props) {
     //       });
     //   }      
 
-    const template =data.map((array,index)=>(
-                <>
-                <tr nama={array.accountNumber} key={index.toString()}>
-                    <th scope='row'>{array.accountNumber}</th>
-                    <th scope='row'>{array.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
-                    <th scope='row'>{array.currency}</th>                         
-                    <th scope='row'>{array.lastTransactionDate}</th>                         
-                </tr>                    
-                </>
-
-                
+    const template =data.map((array,index)=>(                
+        <tr nama={array.accountNumber} key={index.toString()}>
+            <th scope='row'>{array.accountNumber}</th>
+            <th scope='row'>{array.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
+            <th scope='row'>{array.currency}</th>                         
+            <th scope='row'>{array.lastTransactionDate}</th>                         
+        </tr>                                            
     ))
     return(
         <div>
             <h1 className={styles.title}>                
                 Helo Mr Many Account
-            </h1>
-            {/* <MDBBtn color="secondary">Button</MDBBtn> */}
+            </h1>            
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">
                     <tr>

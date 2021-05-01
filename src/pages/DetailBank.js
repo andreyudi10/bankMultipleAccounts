@@ -10,21 +10,17 @@ function DetailBank(props) {
     const {id} = useParams()
     const [data,setData] = useState(dataLihat.data)
     const hasil = data.filter((aray)=>aray.accountNumber==id)                  
-    const [currency,setCurrency] = useState(hasil[0].currency)
-      
+    const [currency,setCurrency] = useState(hasil[0].currency)      
 
-
-    const ulang =hasil[0].details.map((value,key)=>
-        <>
-            <tr >
-                <th scope='row'>{value.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
-                <th scope='row'>{value.date}</th>
-                <th scope='row'>{currency}</th>                         
-                <th scope='row'>{value.debit}</th>
-                <th scope='row'>{value.credit}</th>
-                <th scope='row'>{value.transactionnarative}</th>
-            </tr>                    
-        </>
+    const ulang =hasil[0].details.map((value,key)=>        
+        <tr >
+            <th scope='row'>{value.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
+            <th scope='row'>{value.date}</th>
+            <th scope='row'>{currency}</th>                         
+            <th scope='row'>{value.debit}</th>
+            <th scope='row'>{value.credit}</th>
+            <th scope='row'>{value.transactionnarative}</th>
+        </tr>                            
     )
     // useEffect(()=>
     //     console.log(data)
