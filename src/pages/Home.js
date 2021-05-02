@@ -28,6 +28,7 @@ function Home(props) {
 
     const tableBody =FilteredData.map((array,index)=>(                
         <tr nama={array.accountNumber} key={index.toString()}>
+            <th scope='row'>{index+1}</th>
             <th scope='row'>{array.accountNumber}</th>
             <th scope='row'>{array.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
             <th scope='row'>{array.currency}</th>                         
@@ -39,10 +40,16 @@ function Home(props) {
             <h1 className={styles.title}>                
                 Welcome Mr. Many Account
             </h1>            
-            <input type="text" value={search} onChange={handleChange} placeholder="Search by anything"></input>
+            <input  type="text" 
+                    value={search} 
+                    onChange={handleChange} 
+                    placeholder="Search by anything"
+                    className={styles.input}>                
+            </input>
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">
                     <tr>
+                        <th scope='col'>No</th>
                         <th scope='col'>Account Number</th>
                         <th scope='col'>Balance</th>
                         <th scope='col'>Currency</th>                    

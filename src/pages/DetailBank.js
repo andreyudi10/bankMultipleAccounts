@@ -30,6 +30,7 @@ function DetailBank(props) {
 
     const tableBody = filtered && filtered.map((value,key)=>        
         <tr key={key.toString()}>
+            <th scope='row'>{key+1}</th>
             <th scope='row'>{value.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
             <th scope='row'>{value.date}</th>
             <th scope='row'>{currency}</th>                         
@@ -54,6 +55,7 @@ function DetailBank(props) {
             <MDBTable hover>
             <MDBTableHead className="bg-primary shadow-1-strong text-light">
                 <tr>
+                    <th scope='col'>No</th>
                     <th scope='col'>Value</th>
                     <th scope='col'>Date</th>
                     <th scope='col'>Currency</th>                    

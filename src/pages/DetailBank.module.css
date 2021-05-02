@@ -1,19 +1,25 @@
 .backButton{
     display:block;
     float:right;        
-    margin: 0 auto;
+    margin: 0 auto 5px 0;
+
 }
 
+.input{
+    display:block;
+    float:right;
+    margin: 5px;
+    padding: 0;
+    height: auto;
+    width: auto;
+
+}
 .title{        
+    display: block;
     text-align: center;
-    display: inline;
 }
 
 .area{
     margin:0 auto;
     width: 60%;
-}
-
-.input{
-    display:block;
 }
