@@ -13,7 +13,7 @@ function DetailBank(props) {
     const [currency,setCurrency] = useState(hasil[0].currency)      
 
     const ulang =hasil[0].details.map((value,key)=>        
-        <tr >
+        <tr key={key.toString()}>
             <th scope='row'>{value.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
             <th scope='row'>{value.date}</th>
             <th scope='row'>{currency}</th>                         

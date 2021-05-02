@@ -6,9 +6,27 @@ import styles from './Home.module.css'
 function Home(props) {    
     let history = useHistory()
     const [data,setData] = useState(dataLihat.data)
+    const [search, setSearch] = useState('')
+    const [filtered, setFiltered]=useState([])
     const handleClick = (e) =>(           
         history.push(`./${e.target.parentNode.getAttribute('nama')}`)        
     )
+    const handleChange = (e) => {        
+        setSearch(e.target.value)
+    }    
+
+    useEffect(()=>{        
+        const results = data.filter(data =>
+            data.currency.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+            data.accountNumber.toString().indexOf(search.toLowerCase()) > -1 ||
+            data.lastTransactionDate.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+            data.balance.toString().indexOf(search.toLowerCase()) > -1
+          );
+          setFiltered(results);
+    }        
+    ,[search])
+    
+
     // console.log(props.data)
     // const aray = [
     //     {
@@ -42,7 +60,7 @@ function Home(props) {
     //       });
     //   }      
 
-    const template =data.map((array,index)=>(                
+    const template =filtered.map((array,index)=>(                
         <tr nama={array.accountNumber} key={index.toString()}>
             <th scope='row'>{array.accountNumber}</th>
             <th scope='row'>{array.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
@@ -55,6 +73,7 @@ function Home(props) {
             <h1 className={styles.title}>                
                 Helo Mr Many Account
             </h1>            
+            <input type="text" value={search} onChange={handleChange} placeholder="search"></input>
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">
                     <tr>
