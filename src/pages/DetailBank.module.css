@@ -8,3 +8,8 @@
     text-align: center;
     display: inline;
 }
+
+.area{
+    margin:0 auto;
+    width: 60%;
+}

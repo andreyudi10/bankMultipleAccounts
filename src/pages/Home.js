@@ -20,7 +20,7 @@ function Home(props) {
             data.currency.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
             data.accountNumber.toString().indexOf(search.toLowerCase()) > -1 ||
             data.lastTransactionDate.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
-            data.balance.toString().indexOf(search.toLowerCase()) > -1
+            data.balance.toString().indexOf(search.toLowerCase()) > -1  
           );
           setFiltered(results);
     }        
@@ -69,11 +69,11 @@ function Home(props) {
         </tr>                                            
     ))
     return(
-        <div>
+        <div className={styles.area}>
             <h1 className={styles.title}>                
                 Helo Mr Many Account
             </h1>            
-            <input type="text" value={search} onChange={handleChange} placeholder="search"></input>
+            <input type="text" value={search} onChange={handleChange} placeholder="search by anything"></input>
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">
                     <tr>

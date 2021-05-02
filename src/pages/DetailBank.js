@@ -9,7 +9,7 @@ import styles from './DetailBank.module.css'
 function DetailBank(props) {    
     const {id} = useParams()
     const [data,setData] = useState(dataLihat.data)
-    const hasil = data.filter((aray)=>aray.accountNumber==id)                  
+    const hasil = data.filter((aray)=>aray.accountNumber.toString()===id)                  
     const [currency,setCurrency] = useState(hasil[0].currency)      
 
     const ulang =hasil[0].details.map((value,key)=>        
@@ -26,7 +26,7 @@ function DetailBank(props) {
     //     console.log(data)
     // ,[])
     return(
-        <div>
+        <div className={styles.area}>
             <h1 className={styles.title}>
                 Detail Bank                            
             </h1>
