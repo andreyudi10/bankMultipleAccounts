@@ -7,7 +7,7 @@ function Home(props) {
     let history = useHistory()
     const [data,setData] = useState(dataLihat.data)
     const [search, setSearch] = useState('')
-    const [filtered, setFiltered]=useState([])
+    const [FilteredData, setFilteredData]=useState([])
     const handleClick = (e) =>(           
         history.push(`./${e.target.parentNode.getAttribute('nama')}`)        
     )
@@ -22,45 +22,11 @@ function Home(props) {
             data.lastTransactionDate.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
             data.balance.toString().indexOf(search.toLowerCase()) > -1  
           );
-          setFiltered(results);
+          setFilteredData(results);
     }        
     ,[search])
-    
 
-    // console.log(props.data)
-    // const aray = [
-    //     {
-    //         value:'andri',
-    //         kentang:1                
-    //     },
-    //     {
-    //         value:'yudi',
-    //         kentang:2                
-    //     },
-    //     {
-    //         value:'pratomo',
-    //         kentang:3                
-    //     },                    
-    // ]
-    // const getData=()=>{
-    //     fetch('./data2.json'
-    //     ,{
-    //       headers : { 
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //        }
-    //     }
-    //     )
-    //       .then(function(response){
-    //         console.log(response)
-    //         return response.json();
-    //       })
-    //       .then(function(myJson) {
-    //         console.log(myJson);
-    //       });
-    //   }      
-
-    const template =filtered.map((array,index)=>(                
+    const tableBody =FilteredData.map((array,index)=>(                
         <tr nama={array.accountNumber} key={index.toString()}>
             <th scope='row'>{array.accountNumber}</th>
             <th scope='row'>{array.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
@@ -71,9 +37,9 @@ function Home(props) {
     return(
         <div className={styles.area}>
             <h1 className={styles.title}>                
-                Helo Mr Many Account
+                Welcome Mr. Many Account
             </h1>            
-            <input type="text" value={search} onChange={handleChange} placeholder="search by anything"></input>
+            <input type="text" value={search} onChange={handleChange} placeholder="Search by anything"></input>
             <MDBTable hover>
                 <MDBTableHead className="bg-primary shadow-1-strong text-light">
                     <tr>
@@ -85,7 +51,7 @@ function Home(props) {
                 </MDBTableHead>
 
                 <MDBTableBody onClick={handleClick}>
-                    {template}
+                    {tableBody}
                 </MDBTableBody>
             </MDBTable>            
         </div>

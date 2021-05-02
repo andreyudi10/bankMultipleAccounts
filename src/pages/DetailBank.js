@@ -8,11 +8,27 @@ import styles from './DetailBank.module.css'
 
 function DetailBank(props) {    
     const {id} = useParams()
-    const [data,setData] = useState(dataLihat.data)
-    const hasil = data.filter((aray)=>aray.accountNumber.toString()===id)                  
-    const [currency,setCurrency] = useState(hasil[0].currency)      
+    const [data,setData] = useState(dataLihat.data)    
+    const objekFilteredData = data.filter((aray)=>aray.accountNumber.toString()===id)
+    const arrayFilteredData = objekFilteredData[0].details    
+    const [hasil,setHasil]=useState(arrayFilteredData)
+    const [searchTerm,setSearchTerm]=useState('')
+    const [filtered,setFiltered] = useState()
+    const [currency,setCurrency] = useState(objekFilteredData[0].currency)     
+    useEffect(()=>{
+        const results = arrayFilteredData.filter((value)=>
+            value.transactionnarative.indexOf(searchTerm.toLowerCase()) > -1
+        )        
+        setFiltered(results)
+        console.log(filtered)
+    }
+    ,[searchTerm])
+    
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value)
+    }
 
-    const ulang =hasil[0].details.map((value,key)=>        
+    const tableBody = filtered && filtered.map((value,key)=>        
         <tr key={key.toString()}>
             <th scope='row'>{value.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</th>
             <th scope='row'>{value.date}</th>
@@ -21,10 +37,7 @@ function DetailBank(props) {
             <th scope='row'>{value.credit}</th>
             <th scope='row'>{value.transactionnarative}</th>
         </tr>                            
-    )
-    // useEffect(()=>
-    //     console.log(data)
-    // ,[])
+    )    
     return(
         <div className={styles.area}>
             <h1 className={styles.title}>
@@ -35,6 +48,9 @@ function DetailBank(props) {
                     back
                 </MDBBtn>                
             </Link>
+            <input type="text" placeholder="Search by Narative" className={styles.input} onChange={handleChange}>
+                
+            </input>
             <MDBTable hover>
             <MDBTableHead className="bg-primary shadow-1-strong text-light">
                 <tr>
@@ -48,7 +64,7 @@ function DetailBank(props) {
             </MDBTableHead>
 
             <MDBTableBody>
-                {ulang}
+                {tableBody}
             </MDBTableBody>
         </MDBTable>                     
         </div>
