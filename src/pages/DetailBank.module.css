@@ -2,21 +2,21 @@
     display:block;
     float:right;        
     margin: 0 auto 5px 0;
+    padding: 12px;
 
 }
+
 
 .input{
     display:block;
     float:right;
-    margin: 5px;
-    padding: 0;
-    height: auto;
-    width: auto;
-
+    margin: 5px;      
+    padding: 3px;
 }
 .title{        
     display: block;
     text-align: center;
+    
 }
 
 .area{

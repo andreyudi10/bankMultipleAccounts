@@ -3,6 +3,7 @@
     text-align: center;
 }
 
+
 .area{    
     width: 60%;
     margin: 0 auto
@@ -11,6 +12,6 @@
 .input{
     display: block;    
     float:right;
-    
+    padding: 3px;    
     margin:1px 1px 5px 1px;
 }
