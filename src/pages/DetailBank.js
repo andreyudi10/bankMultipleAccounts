@@ -49,7 +49,7 @@ function DetailBank(props) {
                     back
                 </MDBBtn>                
             </Link>
-            <input type="text" placeholder="Search by Narative" className={styles.input} onChange={handleChange}>
+            <input type="text" placeholder="Search by narative" className={styles.input} onChange={handleChange}>
                 
             </input>
             <MDBTable hover>
